@@ -27,6 +27,7 @@ env:
   SDK_VERSION: "${{ inputs.sdk_version }}"
   GOOGLE_DRIVE_ID: "${{ inputs.google_drive_id }}"
   ES_VER: "${{ inputs.es_ver }}"
+  PROJECT_NAME: "${{ inputs.project_name }}"
 
 jobs:
   download:
@@ -89,8 +90,8 @@ jobs:
 
       - name: Copy mod files to game directory
         run: |
-          mkdir -p "./game_files/Everlasting Summer/game/$PROJECT_NAME"
-          cp -r ./code ./images ./sounds "./game_files/Everlasting Summer/game/$PROJECT_NAME"
+          mkdir -p "./game_files/Everlasting Summer/game/${{ env.PROJECT_NAME }}"
+          cp -r ./code ./images ./sounds "./game_files/Everlasting Summer/game/${{ env.PROJECT_NAME }}"
           echo "Folder contents:"
           ls "./game_files/Everlasting Summer/game"
 
