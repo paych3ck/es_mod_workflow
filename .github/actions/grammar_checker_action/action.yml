@@ -6,7 +6,18 @@ inputs:
     required: true
     type: string
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.files }}
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run Grammar Checker Script
+      run: |
+        python main.py ${{ inputs.files }}
+      shell: bash
