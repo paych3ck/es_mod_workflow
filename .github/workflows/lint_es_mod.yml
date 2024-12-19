@@ -132,7 +132,7 @@ jobs:
 
       - name: Files list
         run: |
-          ls -la
+          ls -la /game_files
 
       - name: Run Grammar Checker
         uses: paych3ck/grammar_checker_action@v1.0.1
