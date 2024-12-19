@@ -123,6 +123,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up cache for Game
+        id: cache-game
+        uses: actions/cache@v3
+        with:
+          path: "./game_files"
+          key: ${{ runner.os }}-everlasting-summer-${{ env.ES_VER }}-${{ env.GOOGLE_DRIVE_ID }}
+
       - name: Run Grammar Checker
         uses: paych3ck/grammar_checker_action@v1.0.1
         with:
