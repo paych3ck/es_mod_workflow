@@ -1,0 +1,12 @@
+name: "Grammar Checker Action"
+description: "Проверяет орфографию в указанных файлах с помощью Яндекс.Speller API"
+inputs:
+  files:
+    description: "Список файлов для проверки, разделённых пробелами"
+    required: true
+    type: string
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.files }}
